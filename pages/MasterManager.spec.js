@@ -33,11 +33,12 @@ async Master(){
         await fileChooser.setFiles(filePath);
 
         //Replace the file
-        // const replaceChooserPromise = this.page.waitForEvent("filechooser");
-        await this.page.getByText("Replace").click();
         const replaceChooserPromise = this.page.waitForEvent("filechooser");
+        await this.page.getByText("Replace").click();
         const replaceChooser = await replaceChooserPromise;
         await replaceChooser.setFiles(filePath);
+
+        //test
 
 
 
