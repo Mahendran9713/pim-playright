@@ -63,9 +63,21 @@ async Master(){
         const count = await orderInputs.count();
         for (let i = 0; i < count; i++) {await orderInputs.nth(i).fill(String(i + 1));}
 
-        
+        //click on the save as Draft button and click no to cancel 
+        await this.page.getByText("Save as Draft").click();
+        await this.page.locator("//button[@class='swal2-cancel swal2-styled']").click();
 
+        //click on the save as draft button and click on yes to continue
+        await this.page.getByText("Save as Draft").click();
+        await this.page.locator("//button[@class='swal2-confirm swal2-styled']").click();
 
+        //click on the create button and click no to cancel
+        await this.page.locator("//button[@title='Create Master']").click();
+        await this.page.locator("//button[@class='swal2-cancel swal2-styled']").click();
+
+        //click on the create button and click on yes to continue
+        await this.page.locator("//button[@title='Create Master']").click();
+        await this.page.locator("//button[@class='swal2-confirm swal2-styled']").click();
 
 
 
