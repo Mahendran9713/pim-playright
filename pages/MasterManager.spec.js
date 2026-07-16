@@ -38,8 +38,32 @@ async Master(){
         const replaceChooser = await replaceChooserPromise;
         await replaceChooser.setFiles(filePath);
 
-        //test
+        //Remove and add the file in the upload via CSV
+        const removechooserpromise = this.page.waitForEvent("filechooser");
+        await this.page.getByText("Remove").click();
+        await this.page.locator(".react-select__control").nth(1).click();
+        await this.page.getByRole("option", { name: "Upload via CSV" }).click();
+        const removechooser = await removechooserpromise;
+        await removechooser.setFiles(filePath);
 
+        //click the confirm buton
+        await this.page.locator(('//button[@title="Create Master"]')).click();
+
+        //filling the order no in the master manager
+        //wait for table visiblity
+        await this.page.waitForSelector("table", {state: "visible",timeout: 3000});
+
+        //how to find the table and count
+        // const table = this.page.locator("table");
+        // console.log(await table.count());
+        // console.log(await this.page.locator("tr").count());
+
+
+        const orderInputs = this.page.locator("//input[starts-with(@id,'field order')]");
+        const count = await orderInputs.count();
+        for (let i = 0; i < count; i++) {await orderInputs.nth(i).fill(String(i + 1));}
+
+        
 
 
 

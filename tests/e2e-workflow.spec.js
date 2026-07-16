@@ -22,5 +22,5 @@ test("Complete PIM Workflow", async ({ page }) => {
     
     await mastermanager.Master();
 
-    await page.pause();
+    // await page.pause();
 });
