@@ -1,10 +1,11 @@
 const { test } = require("@playwright/test");
 const { Scrolldown } = require("../StudyTopics/scrolldown");
+const { dropdown } = require("../StudyTopics/dropdown");
 
 test("Complete Test", async ({ page }) => {
 
     const testscrolldown = new Scrolldown(page);
-    // const testdropdown = new dropdown(page);
+    const testdropdown = new dropdown(page);
 
     await testscrolldown.scrollToBottom();
     await testscrolldown.scrollToTop();
