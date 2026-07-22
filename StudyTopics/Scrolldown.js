@@ -1,6 +1,3 @@
-const { expect } = require("@playwright/test");
-const { error } = require("node:console");
-
 class Scrolldown {
 
     constructor(page) {
@@ -9,7 +6,7 @@ class Scrolldown {
 
     //Scroll Top to Bottom
     async scrollToBottom() {
-        await this.page.goto("https://www.amazon.in/");
+        // await this.page.goto("https://testautomationpractice.blogspot.com/");
         await this.page.locator("body").hover();
 
         let previousHeight = 0;
@@ -61,7 +58,7 @@ class Scrolldown {
 
     //Method - 2 = scroll till Specific area
     async SpecificPlacescroll(){ 
-      const scrollexample = this.page.locator("//div[@id='desktop-2']");
+      const scrollexample = this.page.locator("//label[@for='country']");
       await scrollexample.scrollIntoViewIfNeeded();
 
       console.log("Reached specific Area");
